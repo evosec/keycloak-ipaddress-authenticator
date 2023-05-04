@@ -27,16 +27,17 @@ jobs:
           path: ~/.m2/repository
           key: ${{ hashFiles('**/pom.xml') }}
 
-      - name: Build
-        run: mvn --batch-mode clean package
-
       - name: Determine version
         id: project-version
         run: echo "project-version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_OUTPUT
 
+      - name: Build
+        run: mvn --batch-mode clean package
+
       - name: Create Checksum
         run: |
           sha256sum target/keycloak-ipaddress-authenticator-${{ steps.project-version.outputs.project-version }}.jar > keycloak-ipaddress-authenticator-${{ steps.project-version.outputs.project-version }}.jar.sha256
+          sha256sum target/keycloak-ipaddress-authenticator-${{ steps.project-version.outputs.project-version }}-jar-with-dependencies.jar > keycloak-ipaddress-authenticator-${{ steps.project-version.outputs.project-version }}-jar-with-dependencies.jar.sha256
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
@@ -45,7 +46,9 @@ jobs:
           if-no-files-found: error
           path: |
             target/keycloak-ipaddress-authenticator-${{ steps.project-version.outputs.project-version }}.jar
+            target/keycloak-ipaddress-authenticator-${{ steps.project-version.outputs.project-version }}-jar-with-dependencies.jar
             keycloak-ipaddress-authenticator-${{ steps.project-version.outputs.project-version }}.jar.sha256
+            keycloak-ipaddress-authenticator-${{ steps.project-version.outputs.project-version }}-jar-with-dependencies.jar.sha256
 
   create_release:
     name: Create Release
