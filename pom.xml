@@ -10,7 +10,7 @@
     <name>Keycloak IP-Address Authenticator</name>
 
     <properties>
-        <keycloak.version>22.0.0</keycloak.version>
+        <keycloak.version>22.0.3</keycloak.version>
         <seancfoley.ipaddress.version>5.4.0</seancfoley.ipaddress.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
