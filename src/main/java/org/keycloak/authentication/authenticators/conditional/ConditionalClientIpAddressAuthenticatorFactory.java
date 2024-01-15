@@ -73,6 +73,7 @@ public class ConditionalClientIpAddressAuthenticatorFactory implements Condition
         final ProviderConfigProperty ipRanges = new ProviderConfigProperty();
         ipRanges.setType(MULTIVALUED_STRING_TYPE);
         ipRanges.setName(CONF_IP_RANGES);
+        ipRanges.setDefaultValue("a:b:c:d::/64");
         ipRanges.setLabel("IP ranges / subnets");
         ipRanges.setHelpText("A list of IP ranges. Supports IPv6 and IPv4, supports CIDR and netmask notation. Examples: a:b:c:d::/64, a.b.c.d/255.255.0.0");
 
