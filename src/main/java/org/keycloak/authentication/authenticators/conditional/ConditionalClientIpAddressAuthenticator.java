@@ -29,6 +29,12 @@ public class ConditionalClientIpAddressAuthenticator implements ConditionalAuthe
 
         final ConditionalClientIpAddressAuthenticatorConfig config =
                 new ConditionalClientIpAddressAuthenticatorConfig(context.getAuthenticatorConfig());
+        return matchCondition(context, config);
+    }
+
+    // package-private for testing
+    boolean matchCondition(AuthenticationFlowContext context, ConditionalClientIpAddressAuthenticatorConfig config) {
+
         final Optional<IPAddress> clientIpAddress = getClientIpAddress(context, config);
 
         if (clientIpAddress.isPresent()) {

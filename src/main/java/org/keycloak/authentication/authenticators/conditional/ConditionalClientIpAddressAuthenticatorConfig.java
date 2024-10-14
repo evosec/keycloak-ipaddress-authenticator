@@ -25,17 +25,20 @@ class ConditionalClientIpAddressAuthenticatorConfig {
 
     private static final Logger LOG = Logger.getLogger(ConditionalClientIpAddressAuthenticatorConfig.class);
 
-    final Set<IPAddressRange> ipRanges;
-    final boolean exclude;
-    final boolean useForwardedHeader;
-    final String forwardedHeaderName;
-    final int trustedProxiesCount;
+    private Set<IPAddressRange> ipRanges;
+    private boolean exclude;
+    private boolean useForwardedHeader;
+    private String forwardedHeaderName;
+    private int trustedProxiesCount;
 
-    public ConditionalClientIpAddressAuthenticatorConfig(AuthenticatorConfigModel configModel) {
+    ConditionalClientIpAddressAuthenticatorConfig() {
+    }
+
+    ConditionalClientIpAddressAuthenticatorConfig(AuthenticatorConfigModel configModel) {
         this(configModel.getConfig());
     }
 
-    public ConditionalClientIpAddressAuthenticatorConfig(Map<String, String> configMap) {
+    ConditionalClientIpAddressAuthenticatorConfig(Map<String, String> configMap) {
         this.ipRanges = getConfiguredIpRanges(configMap);
         this.exclude = Boolean.parseBoolean(configMap.get(CONF_EXCLUDE));
         this.useForwardedHeader = Boolean.parseBoolean(configMap.get(CONF_USE_FORWARDED_HEADER));
@@ -86,19 +89,47 @@ class ConditionalClientIpAddressAuthenticatorConfig {
         return ipRanges;
     }
 
+    public void setIpRanges(Set<IPAddressRange> ipRanges) {
+        this.ipRanges = ipRanges;
+    }
+
+    public void setIpRanges(String... ipRanges) {
+        this.ipRanges = Arrays.stream(ipRanges)
+                .map(this::parseIpAddress)
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .collect(Collectors.toSet());
+    }
+
     public boolean isExclude() {
         return exclude;
+    }
+
+    public void setExclude(boolean exclude) {
+        this.exclude = exclude;
     }
 
     public boolean isUseForwardedHeader() {
         return useForwardedHeader;
     }
 
+    public void setUseForwardedHeader(boolean useForwardedHeader) {
+        this.useForwardedHeader = useForwardedHeader;
+    }
+
     public String getForwardedHeaderName() {
         return forwardedHeaderName;
     }
 
+    public void setForwardedHeaderName(String forwardedHeaderName) {
+        this.forwardedHeaderName = forwardedHeaderName;
+    }
+
     public int getTrustedProxiesCount() {
         return trustedProxiesCount;
+    }
+
+    public void setTrustedProxiesCount(int trustedProxiesCount) {
+        this.trustedProxiesCount = trustedProxiesCount;
     }
 }
