@@ -6,7 +6,7 @@
 
     <groupId>org.keycloak</groupId>
     <artifactId>keycloak-ipaddress-authenticator</artifactId>
-    <version>${keycloak.version}_0</version>
+    <version>${keycloak.version}_1</version>
     <name>Keycloak IP-Address Authenticator</name>
 
     <properties>
