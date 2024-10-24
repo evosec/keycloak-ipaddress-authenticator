@@ -6,11 +6,11 @@
 
     <groupId>org.keycloak</groupId>
     <artifactId>keycloak-ipaddress-authenticator</artifactId>
-    <version>${keycloak.version}_1</version>
+    <version>${keycloak.version}_0</version>
     <name>Keycloak IP-Address Authenticator</name>
 
     <properties>
-        <keycloak.version>25.0.2</keycloak.version>
+        <keycloak.version>26.0.2</keycloak.version>
         <seancfoley.ipaddress.version>5.5.0</seancfoley.ipaddress.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
