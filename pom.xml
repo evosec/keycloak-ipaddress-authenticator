@@ -6,7 +6,7 @@
 
     <groupId>org.keycloak</groupId>
     <artifactId>keycloak-ipaddress-authenticator</artifactId>
-    <version>${keycloak.version}_0</version>
+    <version>${keycloak.version}_1</version>
     <name>Keycloak IP-Address Authenticator</name>
 
     <properties>
@@ -48,6 +48,13 @@
             <artifactId>keycloak-services</artifactId>
             <version>${keycloak.version}</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.11.2</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
