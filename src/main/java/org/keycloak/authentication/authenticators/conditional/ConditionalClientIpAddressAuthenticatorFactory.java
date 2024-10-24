@@ -107,7 +107,7 @@ public class ConditionalClientIpAddressAuthenticatorFactory implements Condition
         trustedProxiesCount.setName(CONF_TRUSTED_PROXIES_COUNT);
         trustedProxiesCount.setLabel("Number of trusted proxies");
         trustedProxiesCount.setDefaultValue("1");
-        trustedProxiesCount.setHelpText("Number of trusted proxies. Only the last n ip addresses from the forwarded header will be used");
+        trustedProxiesCount.setHelpText("Number of trusted proxies in your network. Only the last n ip addresses from the forwarded header will be used.");
 
         return Arrays.asList(ipRanges, exclude, useForwardedHeader, forwardedHeaderName, trustedProxiesCount);
     }
