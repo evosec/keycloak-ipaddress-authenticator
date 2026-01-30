@@ -40,7 +40,7 @@ jobs:
           sha256sum target/keycloak-ipaddress-authenticator-${{ steps.project-version.outputs.project-version }}-jar-with-dependencies.jar > keycloak-ipaddress-authenticator-${{ steps.project-version.outputs.project-version }}-jar-with-dependencies.jar.sha256
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v6
         with:
           name: keycloak-ipaddress-authenticator
           if-no-files-found: error
