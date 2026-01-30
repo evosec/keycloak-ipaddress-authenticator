@@ -275,4 +275,11 @@ public class TestAuthenticationFlowContext implements AuthenticationFlowContext 
         public String getUserErrorMessage() {
             throw new IllegalStateException();
         }
+
+        @Override
+        public void success(String credentialType) {
+
+            // TODO Auto-generated method stub
+            
+        }
     }

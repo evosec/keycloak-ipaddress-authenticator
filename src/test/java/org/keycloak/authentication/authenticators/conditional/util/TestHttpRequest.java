@@ -47,4 +47,10 @@ class TestHttpRequest implements HttpRequest {
         public UriInfo getUri() {
             throw new IllegalStateException();
         }
+
+        @Override
+        public boolean isProxyTrusted() {
+
+            return false;
+        }
     }
