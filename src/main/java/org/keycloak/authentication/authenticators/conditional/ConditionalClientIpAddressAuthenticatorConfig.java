@@ -18,6 +18,7 @@ import static org.keycloak.authentication.authenticators.conditional.Conditional
 import static org.keycloak.authentication.authenticators.conditional.ConditionalClientIpAddressAuthenticatorFactory.CONF_FORWARDED_HEADER_NAME_DEFAULT;
 import static org.keycloak.authentication.authenticators.conditional.ConditionalClientIpAddressAuthenticatorFactory.CONF_IP_RANGES;
 import static org.keycloak.authentication.authenticators.conditional.ConditionalClientIpAddressAuthenticatorFactory.CONF_TRUSTED_PROXIES_COUNT;
+import static org.keycloak.authentication.authenticators.conditional.ConditionalClientIpAddressAuthenticatorFactory.CONF_TRUSTED_PROXIES_COUNT_DEFAULT;
 import static org.keycloak.authentication.authenticators.conditional.ConditionalClientIpAddressAuthenticatorFactory.CONF_USE_FORWARDED_HEADER;
 import static org.keycloak.models.Constants.CFG_DELIMITER_PATTERN;
 
@@ -43,7 +44,7 @@ class ConditionalClientIpAddressAuthenticatorConfig {
         this.exclude = Boolean.parseBoolean(configMap.get(CONF_EXCLUDE));
         this.useForwardedHeader = Boolean.parseBoolean(configMap.get(CONF_USE_FORWARDED_HEADER));
         this.forwardedHeaderName = configMap.getOrDefault(CONF_FORWARDED_HEADER_NAME, CONF_FORWARDED_HEADER_NAME_DEFAULT);
-        this.trustedProxiesCount = Integer.parseInt(configMap.get(CONF_TRUSTED_PROXIES_COUNT));
+        this.trustedProxiesCount = Integer.parseInt(configMap.getOrDefault(CONF_TRUSTED_PROXIES_COUNT, CONF_TRUSTED_PROXIES_COUNT_DEFAULT));
     }
 
     private Set<IPAddressRange> getConfiguredIpRanges(Map<String, String> config) {
