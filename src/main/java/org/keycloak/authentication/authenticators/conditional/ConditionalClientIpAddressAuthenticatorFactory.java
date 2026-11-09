@@ -23,6 +23,7 @@ public class ConditionalClientIpAddressAuthenticatorFactory implements Condition
     static final String CONF_FORWARDED_HEADER_NAME = "forwarded-header-name";
     static final String CONF_FORWARDED_HEADER_NAME_DEFAULT = "X-Forwarded-For";
     static final String CONF_TRUSTED_PROXIES_COUNT = "trusted-proxies-count";
+    static final String CONF_TRUSTED_PROXIES_COUNT_DEFAULT = "1";
 
 
     private static final AuthenticationExecutionModel.Requirement[] REQUIREMENT_CHOICES = new AuthenticationExecutionModel.Requirement[]{AuthenticationExecutionModel.Requirement.REQUIRED, AuthenticationExecutionModel.Requirement.DISABLED};
@@ -106,7 +107,7 @@ public class ConditionalClientIpAddressAuthenticatorFactory implements Condition
         trustedProxiesCount.setType(STRING_TYPE);
         trustedProxiesCount.setName(CONF_TRUSTED_PROXIES_COUNT);
         trustedProxiesCount.setLabel("Number of trusted proxies");
-        trustedProxiesCount.setDefaultValue("1");
+        trustedProxiesCount.setDefaultValue(CONF_TRUSTED_PROXIES_COUNT_DEFAULT);
         trustedProxiesCount.setHelpText("Number of trusted proxies in your network. Only the last n ip addresses from the forwarded header will be used.");
 
         return Arrays.asList(ipRanges, exclude, useForwardedHeader, forwardedHeaderName, trustedProxiesCount);
